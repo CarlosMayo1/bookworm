@@ -18,7 +18,7 @@ export interface genre {
 
 export interface apiResponse {
   status: boolean;
-  data: object[] | null;
+  data?: T[];
   message: string;
 }
 

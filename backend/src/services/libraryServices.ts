@@ -1,4 +1,4 @@
-import { book, author, genre, bookGenre, bookAuthor } from '../types';
+import { book, author, genre, bookGenre, bookAuthor } from '../../../types';
 import { query } from '../utils/supabase-database';
 
 export const getBooks = async (book_limit: number): Promise<book[]> => {

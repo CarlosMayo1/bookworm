@@ -379,22 +379,19 @@ router.delete('/genre/:id', async (req, res) => {
   if (!validations.validateString(id)) {
     return res.status(400).json({
       status: false,
-      data: null,
       message: 'The id of the genre is mandatory',
     });
   }
 
   try {
-    const response = await libraryServices.deleteGenre(id);
+    await libraryServices.deleteGenre(id);
     return res.status(200).send({
       status: true,
-      data: response,
       message: 'Resource deleted successfully',
     });
   } catch (e: any) {
     return res.status(500).json({
       status: false,
-      data: null,
       message: 'Error when deleting the genre',
     });
   }

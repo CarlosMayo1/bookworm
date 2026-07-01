@@ -430,22 +430,19 @@ router.delete('/author/:id', async (req, res) => {
   if (!validations.validateString(id)) {
     return res.status(400).json({
       status: false,
-      data: null,
       message: 'The id of the author is mandatory',
     });
   }
 
   try {
-    const response = await libraryServices.deleteAuthor(id);
+    await libraryServices.deleteAuthor(id);
     return res.status(200).send({
       status: true,
-      data: response,
       message: 'The author was deleted successfully',
     });
   } catch (e: any) {
     return res.send(500).json({
       status: false,
-      data: null,
       message: 'Error when deleting the author',
     });
   }

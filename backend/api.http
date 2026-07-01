@@ -94,4 +94,4 @@ Content-Type: application/json
 }
 
 ### delete an author
-DELETE http://localhost:3000/api/library/author/10
+DELETE http://localhost:3000/api/library/author/4

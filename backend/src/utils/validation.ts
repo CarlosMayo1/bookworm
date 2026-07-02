@@ -4,7 +4,7 @@ export const validateString = (str: string): boolean => {
   return true;
 };
 
-export const validateNumber = (num: number): boolean => {
+export const validateNumber = (num: any): boolean => {
   if (!num || typeof num !== 'number') return false;
 
   return true;

@@ -1,7 +1,7 @@
 import { book, author, genre, bookGenre, bookAuthor } from '../../../types';
 import { query } from '../utils/supabase-database';
 
-export const getBooks = async (book_limit: number): Promise<book[]> => {
+export const getBooks = async (book_limit: number = 10): Promise<book[]> => {
   const response = await query(
     `
       select id, book_title, book_isbn, author, genre from fetch_books($1);

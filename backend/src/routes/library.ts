@@ -5,18 +5,10 @@ import * as validations from '../utils/validation';
 const router: Router = express.Router();
 
 router.get('/book', async (req, res) => {
-  const { book_limit } = req.body;
-
-  if (!validations.validateNumber(book_limit)) {
-    return res.status(400).json({
-      status: false,
-      data: null,
-      message: 'The book limit should be a numeric',
-    });
-  }
+  const limit = req.query._limit ? parseInt(req.query._limit as string, 10) : undefined;
 
   try {
-    const books = await libraryServices.getBooks(book_limit);
+    const books = await libraryServices.getBooks(limit);
     return res.status(200).send({
       status: true,
       data: books,

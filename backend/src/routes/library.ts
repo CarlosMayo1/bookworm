@@ -5,7 +5,7 @@ import * as validations from '../utils/validation';
 const router: Router = express.Router();
 
 router.get('/book', async (req, res) => {
-  const limit = req.query._limit ? parseInt(req.query._limit as string, 10) : undefined;
+  const limit = req.query._limit ? parseInt(req.query._limit as string, 10) : 10;
 
   try {
     const books = await libraryServices.getBooks(limit);
@@ -22,9 +22,12 @@ router.get('/book', async (req, res) => {
   }
 });
 
-router.get('/author', async (_req, res) => {
+router.get('/author', async (req, res) => {
+  const limit = req.query._limit ? parseInt(req.query._limit as string, 10) : 10;
+
+
   try {
-    const authors = await libraryServices.getAuthors();
+    const authors = await libraryServices.getAuthors(limit);
     return res.status(200).send({
       status: true,
       data: authors,
@@ -84,7 +87,7 @@ router.post('/genre', async (req, res) => {
     // if another error occur in the database we'll send a 500 error
     return res.status(500).json({
       status: false,
-      message: 'Error when creating the genre: ' + e,
+      message: 'Error when creating the genre',
     });
   }
 });

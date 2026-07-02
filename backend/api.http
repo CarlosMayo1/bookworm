@@ -1,13 +1,8 @@
 ### get books
-GET http://localhost:3000/api/library/book?_limit=ten
-Content-Type: application/json
-
-# {
-#   "book_limit": 10
-# }
+GET http://localhost:3000/api/library/book?_limit=1
 
 ### get authors
-GET http://localhost:3000/api/library/author 
+GET http://localhost:3000/api/library/author?_limit=2 
 
 ### get genres
 GET http://localhost:3000/api/library/genre

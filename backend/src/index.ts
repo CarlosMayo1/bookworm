@@ -3,6 +3,7 @@ import libraryRouter from './routes/library';
 import cors from 'cors';
 
 const app = express();
+app.set('json spaces', 2);
 app.use(cors());
 app.use(express.json());
 

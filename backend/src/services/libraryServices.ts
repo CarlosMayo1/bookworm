@@ -1,7 +1,7 @@
 import { book, author, genre, bookGenre, bookAuthor } from '../../../types';
 import { query } from '../utils/supabase-database';
 
-export const getBooks = async (book_limit: number = 10): Promise<book[]> => {
+export const getBooks = async (book_limit: number): Promise<book[]> => {
   const response = await query(
     `
       select id, book_title, book_isbn, author, genre from fetch_books($1);
@@ -11,9 +11,9 @@ export const getBooks = async (book_limit: number = 10): Promise<book[]> => {
   return response.rows;
 };
 
-export const getAuthors = async (): Promise<author[]> => {
+export const getAuthors = async (genre_limit: number): Promise<author[]> => {
   const response = await query(
-    'Select id, name from author order by name limit 10;',
+    'Select id, name from author order by name limit $1;', [genre_limit]
   );
   return response.rows;
 };

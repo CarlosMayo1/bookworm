@@ -18,9 +18,9 @@ export const getAuthors = async (genre_limit: number): Promise<author[]> => {
   return response.rows;
 };
 
-export const getGenres = async (): Promise<genre[]> => {
+export const getGenres = async (genre_limit: number): Promise<genre[]> => {
   const response = await query(
-    'select id, name from genre order by name limit 10;', // <-- we can manage the limit of data
+    'select id, name from genre order by name limit $1;', [genre_limit] // <-- we can manage the limit of data
   );
   return response.rows;
 };

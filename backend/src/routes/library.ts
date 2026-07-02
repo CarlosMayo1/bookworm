@@ -25,7 +25,6 @@ router.get('/book', async (req, res) => {
 router.get('/author', async (req, res) => {
   const limit = req.query._limit ? parseInt(req.query._limit as string, 10) : 10;
 
-
   try {
     const authors = await libraryServices.getAuthors(limit);
     return res.status(200).send({
@@ -41,9 +40,10 @@ router.get('/author', async (req, res) => {
   }
 });
 
-router.get('/genre', async (_req, res) => {
+router.get('/genre', async (req, res) => {
+  const limit = req.query._limit ? parseInt(req.query._limit as string, 10) : 10;
   try {
-    const genre = await libraryServices.getGenres();
+    const genre = await libraryServices.getGenres(limit);
     return res.status(200).send({
       status: true,
       data: genre,

@@ -94,7 +94,6 @@ router.post('/author', async (req, res) => {
   if (!validations.validateString(name)) {
     return res.status(400).json({
       status: false,
-      data: null,
       message: 'The name of the author is mandatory',
     });
   }
@@ -111,14 +110,12 @@ router.post('/author', async (req, res) => {
     if (e.code === '23505') {
       return res.status(409).json({
         status: false,
-        data: null,
         message: 'The author already exists',
       });
     }
 
     return res.status(500).json({
       status: false,
-      data: null,
       message: 'Error when creating the resource',
     });
   }
@@ -133,7 +130,6 @@ router.post('/book-genre', async (req, res) => {
   ) {
     return res.status(400).json({
       status: false,
-      data: null,
       message: 'Invalid id of the book or id of the genre',
     });
   }
@@ -150,14 +146,12 @@ router.post('/book-genre', async (req, res) => {
     if (e.code === '23505') {
       return res.status(409).json({
         status: false,
-        data: null,
         message: 'The resource already exists',
       });
     }
 
     return res.status(500).json({
       status: false,
-      data: null,
       message: 'Error when creating the resource',
     });
   }
@@ -172,7 +166,6 @@ router.post('/book-author', async (req, res) => {
   ) {
     return res.status(400).json({
       status: false,
-      data: null,
       message: 'Invalid id of the book or id of the author',
     });
   }
@@ -188,13 +181,11 @@ router.post('/book-author', async (req, res) => {
     if (e.code === '23505') {
       return res.status(409).json({
         status: false,
-        data: null,
         message: 'The resource already exists',
       });
     }
     return res.status(500).json({
       status: false,
-      data: null,
       message: 'Error when creating the resource',
     });
   }
@@ -209,7 +200,6 @@ router.post('/book', async (req, res) => {
   ) {
     return res.status(400).json({
       status: false,
-      data: null,
       message: 'Invalid book title or book isbn',
     });
   }
@@ -220,7 +210,6 @@ router.post('/book', async (req, res) => {
   ) {
     return res.status(400).json({
       status: false,
-      data: null,
       message: 'Invalid id of the genre or id of the author',
     });
   }
@@ -244,14 +233,12 @@ router.post('/book', async (req, res) => {
     if (e.code === '23505') {
       return res.status(409).json({
         status: false,
-        data: null,
         message: 'The resource already exists',
       });
     }
 
     return res.status(500).json({
       status: false,
-      data: null,
       message: 'Error when creating the resource: ' + e,
     });
   }
@@ -263,7 +250,6 @@ router.delete('/book/:id', async (req, res) => {
   if (!validations.validateString(id) || !id) {
     return res.status(400).json({
       status: false,
-      data: null,
       message: 'The id of the book mandatory',
     });
   }
@@ -278,7 +264,6 @@ router.delete('/book/:id', async (req, res) => {
   } catch (e: any) {
     return res.status(500).json({
       status: false,
-      data: null,
       message: 'Error when deleting the resource',
     });
   }
@@ -294,7 +279,6 @@ router.put('/book', async (req, res) => {
   ) {
     return res.status(400).json({
       status: false,
-      data: null,
       message: 'Invalid book title or book isbn',
     });
   }
@@ -305,7 +289,6 @@ router.put('/book', async (req, res) => {
   ) {
     return res.status(400).json({
       status: false,
-      data: null,
       message: 'Invalid id of the genre or id of the author',
     });
   }
@@ -326,7 +309,6 @@ router.put('/book', async (req, res) => {
   } catch (e: any) {
     return res.status(500).json({
       status: false,
-      data: null,
       message: 'Error when updating the resource',
     });
   }
@@ -338,7 +320,6 @@ router.put('/genre', async (req, res) => {
   if (!validations.validateNumber(id) || !validations.validateString(name)) {
     return res.status(400).json({
       status: false,
-      data: null,
       message: 'The id of the genre and the name are mandatory',
     });
   }
@@ -353,7 +334,6 @@ router.put('/genre', async (req, res) => {
   } catch (e: any) {
     return res.status(500).json({
       status: false,
-      data: null,
       message: 'Error when updating the resource',
     });
   }
@@ -389,7 +369,6 @@ router.put('/author', async (req, res) => {
   if (!validations.validateNumber(id) || !validations.validateString(name)) {
     return res.status(400).json({
       status: false,
-      data: null,
       message: 'The id of the author and the name are mandatory',
     });
   }
@@ -404,7 +383,6 @@ router.put('/author', async (req, res) => {
   } catch (e: any) {
     return res.status(500).json({
       status: false,
-      data: null,
       message: 'Error when updating the author',
     });
   }

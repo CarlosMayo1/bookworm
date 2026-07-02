@@ -82,7 +82,7 @@ Content-Type: application/json
 }
 
 ### delete a genre
-DELETE http://localhost:3000/api/library/genre/6
+DELETE http://localhost:3000/api/library/genre/7
 
 ### update an author
 PUT http://localhost:3000/api/library/author

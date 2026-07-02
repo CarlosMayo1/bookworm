@@ -17,7 +17,6 @@ router.get('/book', async (req, res) => {
   } catch (e: any) {
     return res.status(500).json({
       status: false,
-      data: null,
       message: 'Error when fetching resources',
     });
   }
@@ -34,7 +33,6 @@ router.get('/author', async (_req, res) => {
   } catch (e: any) {
     return res.status(500).json({
       status: false,
-      data: null,
       message: 'Error when fetching resources',
     });
   }
@@ -51,7 +49,6 @@ router.get('/genre', async (_req, res) => {
   } catch (e: any) {
     return res.status(500).json({
       status: false,
-      data: null,
       message: 'Error when fetching resources',
     });
   }
@@ -62,7 +59,6 @@ router.post('/genre', async (req, res) => {
   if (!validations.validateString(name)) {
     return res.status(400).json({
       status: false,
-      data: null,
       message: 'The name of the genre is mandatory',
     });
   }
@@ -81,7 +77,6 @@ router.post('/genre', async (req, res) => {
       return res.status(409).json({
         // 409 Conflict
         status: false,
-        data: null,
         message: 'This genre already exists',
       });
     }
@@ -89,7 +84,6 @@ router.post('/genre', async (req, res) => {
     // if another error occur in the database we'll send a 500 error
     return res.status(500).json({
       status: false,
-      data: null,
       message: 'Error when creating the genre: ' + e,
     });
   }
